@@ -34,9 +34,7 @@ def create_flask_app():
     logger.info(f'局域网: {getHost(1, app.config.get("HTTP_PORT"))}/index\n本地: {getHost(0, app.config.get("HTTP_PORT"))}/index\nwlan_info:{wlan_info}')
     db.init_app(app)
     db.app = app
-#    db.create_all(app=app)
-    with app.app_context():
-        db.create_all()
+    db.create_all(app=app)
     return app
 
 app = create_flask_app()
